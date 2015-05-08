@@ -1,5 +1,7 @@
+#FROM ubuntu:trusty
 #FROM rbrooker/update-ubuntu
-FROM rbrooker/java
+#FROM rbrooker/java
+FROM rbrooker/es
 
 MAINTAINER Ramon Brooker <rbrooker@aetherealmind.com>
 
@@ -15,20 +17,15 @@ ENV ES_VERSION_MAJOR=1.5
 ENV ES_VERISON_MINOR=1.5.2
 
 # install need java run time 
-RUN apt-get update && apt-get install -y openjdk-7-jre-headless 
+#RUN apt-get update && apt-get install -y openjdk-7-jre-headless 
 #curl 
 
 # get and install logstash
-ADD  https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ES_VERISON_MINOR}.tar.gz /
-RUN ls
-RUN mv /elasticsearch-${ES_VERISON_MINOR} es/
-#ADD https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${LS_VERISON_MINOR}.deb / 
-RUN ls
-#RUN dpkg -i elasticsearch-${ES_VERISON_MINOR}.deb
+#ADD  https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ES_VERISON_MINOR}.tar.gz /  mv /elasticsearch-${ES_VERISON_MINOR} es/
 
 # Clean up
-RUN apt-get clean
-#RUN rm /elasticsearch-${ES_VERISON_MINOR}.deb
+#RUN apt-get clean
+#RUN rm /elasticsearch-${ES_VERISON_MINOR}.tar.gz
 
 # Copy of run script
 COPY run.sh /
