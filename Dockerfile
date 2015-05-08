@@ -3,6 +3,7 @@
 #FROM rbrooker/java
 FROM rbrooker/es
 
+
 MAINTAINER Ramon Brooker <rbrooker@aetherealmind.com>
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -18,14 +19,25 @@ ENV ES_VERISON_MINOR=1.5.2
 
 # install need java run time 
 #RUN apt-get update && apt-get install -y openjdk-7-jre-headless 
-#curl 
+
 
 # get and install logstash
-#ADD  https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ES_VERISON_MINOR}.tar.gz /  mv /elasticsearch-${ES_VERISON_MINOR} es/
+#ADD  https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-${ES_VERISON_MINOR}.tar.gz /
+#RUN tar -xvzf /elasticsearch-${ES_VERISON_MINOR}.tar.gz && mv /elasticsearch-${ES_VERISON_MINOR} /es
+
+#RUN ulimit -l unlimited
 
 # Clean up
 #RUN apt-get clean
 #RUN rm /elasticsearch-${ES_VERISON_MINOR}.tar.gz
+
+RUN echo "elasticsearch - nofile 65535" >> /etc/security/limits.conf \
+  && echo "elasticsearch - memlock unlimited" >> /etc/security/limits.conf \
+  && echo "MAX_OPEN_FILES=65535"  >> /etc/default/elasticsearch \
+  && echo "MAX_LOCKED_MEMORY=unlimited"  >> /etc/default/elasticsearch 
+
+
+
 
 # Copy of run script
 COPY run.sh /
@@ -35,14 +47,14 @@ RUN chmod +x /run.sh
 
 # add a time stamp
 COPY set-time.sh /
-RUN chmod +x /set-time.sh
-RUN /set-time.sh
+RUN chmod +x /set-time.sh 
+RUN ./set-time.sh
 
 
-VOLUME ["/etc/elasticsearch","/var/log/elasticsearch"]
+#VOLUME ["/es/conf",""]
 
 
-EXPOSE  9200 9300 512
+EXPOSE  9200 9300
 
 CMD ["./run.sh"]
 
