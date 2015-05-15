@@ -1,8 +1,4 @@
 FROM ubuntu:trusty
-#FROM rbrooker/update-ubuntu
-#FROM rbrooker/java
-#FROM rbrooker/es
-
 
 MAINTAINER Ramon Brooker <rbrooker@aetherealmind.com>
 

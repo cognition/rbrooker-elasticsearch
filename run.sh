@@ -22,7 +22,7 @@ PLUGINS_TO_LOAD=
 #  esac
 #done
 
-if [[ -z PLUGINS_TO_LOAD ]] then
+if [[ -z PLUGINS_TO_LOAD ]]; then
   /es/bin/plugin -i $PLUGINS_TO_LOAD
 fi
 
