@@ -43,6 +43,8 @@ RUN chmod +x /set-time.sh
 RUN ./set-time.sh
 
 
+VOLUME  ["/es"]
+
 
 EXPOSE  9200 9300
 

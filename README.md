@@ -21,9 +21,9 @@ docker run -d  -it  --name="es2" --hostname="es2" --volume=/opt/elasticsearch/et
 Notes
 -----
 
-*
+
 * Exposed Default ports 9200 9300
-* Exposed volume to for mounting is "/etc/elasticsearch"  
+* Exposed volume to for mounting is "/es"  
 
 
 
