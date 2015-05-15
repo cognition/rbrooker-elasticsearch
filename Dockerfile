@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM ubuntu:vivid
 
 MAINTAINER Ramon Brooker <rbrooker@aetherealmind.com>
 
@@ -13,8 +13,8 @@ RUN chmod +x /usr/sbin/policy-rc.d
 ENV ES_VERSION_MAJOR=1.5
 ENV ES_VERISON_MINOR=1.5.2
 
-# install need java run time 
-RUN apt-get update && apt-get install -y openjdk-7-jre-headless 
+# install need java run time and update 
+RUN apt-get update && apt-get -y upgrade && apt-get install -y openjdk-7-jre-headless 
 
 
 # get and install logstash
@@ -29,8 +29,6 @@ RUN echo "elasticsearch - nofile 65535" >> /etc/security/limits.conf \
   && echo "elasticsearch - memlock unlimited" >> /etc/security/limits.conf \
   && echo "MAX_OPEN_FILES=65535"  >> /etc/default/elasticsearch \
   && echo "MAX_LOCKED_MEMORY=unlimited"  >> /etc/default/elasticsearch 
-
-
 
 
 # Copy of run script
