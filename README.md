@@ -25,7 +25,8 @@ Notes
 
 
 * Exposed Default ports 9200 9300
-* Exposed volume to for mounting is "/es"  
+* Exposed volume to for mounting are "/es","/data","/es/conf", "/work","/es/logs", and "/es/plugins"
+
 
 
 
