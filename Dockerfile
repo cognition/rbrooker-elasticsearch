@@ -14,7 +14,7 @@ ENV ES_VERSION_MAJOR=1.5
 ENV ES_VERISON_MINOR=1.5.2
 
 # install need java run time and update 
-RUN apt-get update && apt-get -y upgrade && apt-get install -y openjdk-7-jre-headless 
+RUN apt-get update && apt-get -y upgrade && apt-get install -y openjdk-7-jre-headless logrotate
 
 
 # get and install logstash
